@@ -34,8 +34,6 @@ $routes = [
     'registerController' => 'controller/registerController.php',
     'loginController' => 'controller/loginController.php',
     'logout' => 'controller/logoutController.php',
-    'approve' => 'controller/approveController.php',
-    'reject' => 'controller/rejectController.php',
 ];
 
 // check if the url matches a route
