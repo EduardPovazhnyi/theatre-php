@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# If the file or directory exists, skip rewriting
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite all other URLs to index.php with the query parameter "url"
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
