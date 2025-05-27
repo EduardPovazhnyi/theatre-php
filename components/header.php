@@ -40,10 +40,8 @@ session_start();
               </a>
             </li>
 
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='feedback'
-                class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Contact</a>
-            </li>
+         
+
             <li class='max-lg:border-b max-lg:py-3 px-3'>
               <a href='bloglist'
                 class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Blogs</a>
@@ -52,13 +50,29 @@ session_start();
               <a href='reviews'
                 class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Reviews</a>
             </li>
+            
+             <!-- Check if logged in and display role-based pages -->
+          <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) : ?>
+
+            <li class='max-lg:border-b max-lg:py-3 px-3'>
+              <a href='feedback'
+                class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Contact</a>
+            </li>
             <li class='max-lg:border-b max-lg:py-3 px-3'>
               <a href='logout'
                 class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Log Out</a>
             </li>
+
+           <?php if ($_SESSION['role'] === 'admin') : ?>
+             <li class='max-lg:border-b max-lg:py-3 px-3'>
+              <a href='adminDashboard' class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Admin Dashboard</a>
+             </li>
+           <?php endif ?>
+          <?php endif ?>
+
           </ul>
         </div>
-       
+
         <div class='flex items-center ml-auto space-x-6'>
           <button
             class='px-4 py-2 text-sm rounded-sm font-bold text-black border-2 border-black bg-[#FFF000] transition-all ease-in-out duration-300 hover:bg-black hover:text-[#FFF000] hover:border-[#FFF000]'><a href = 'login' >Log In</a></button>
