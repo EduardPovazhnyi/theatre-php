@@ -12,6 +12,7 @@ include "components/header.php";
           </a>
         </div>
 
+        <h2 class="text-gray-800 text-center text-2xl font-bold">Sign up</h2>
         <form action="registerController" method="post">
           <div class="space-y-6">
 
@@ -32,18 +33,14 @@ include "components/header.php";
               <label class="text-gray-800 text-sm mb-2 block">Password</label>
               <input name="password" type="password" class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500" placeholder="Enter password" />
             </div>
-            <div>
-              <label class="text-gray-800 text-sm mb-2 block">Confirm Password</label>
-              <input name="cpassword" type="password" class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500" placeholder="Enter confirm password" />
-            </div>
           </div>
 
           <div class="!mt-8">
-            <button type="submit" class="w-full py-3 px-4 text-sm tracking-wider font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-              Create an account
+            <button type="submit" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-black border-2 border-black bg-[#FFF000] transition-all ease-in-out duration-300 hover:bg-black hover:text-[#FFF000] hover:border-[#FFF000] focus:outline-none">
+              Create an Account
             </button>
           </div>
-          <p class="text-gray-800 text-sm mt-6 text-center">Already have an account? <a href="<?= ROOT_DIR ?>pages/public/login.php" class="text-blue-600 font-semibold hover:underline ml-1">Login here</a></p>
+          <p class="text-gray-800 text-sm mt-6 text-center">Already have an account? <a href="login" class="text-[#880707] hover:text-[#4D0000] font-semibold hover:underline ml-1">Login here</a></p>
         </form>
       </div>
     </div>

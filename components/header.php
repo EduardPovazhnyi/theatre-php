@@ -51,23 +51,22 @@ session_start();
                 class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Reviews</a>
             </li>
             
-             <!-- Check if logged in and display role-based pages -->
+          <!-- Check if logged in and display role-based pages -->
           <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) : ?>
 
             <li class='max-lg:border-b max-lg:py-3 px-3'>
               <a href='feedback'
                 class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Contact</a>
             </li>
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='logout'
-                class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Log Out</a>
-            </li>
-
-           <?php if ($_SESSION['role'] === 'admin') : ?>
+            <?php if ($_SESSION['role'] === 'admin') : ?>
              <li class='max-lg:border-b max-lg:py-3 px-3'>
               <a href='adminDashboard' class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Admin Dashboard</a>
              </li>
            <?php endif ?>
+            <li class='max-lg:border-b max-lg:py-3 px-3'>
+              <a href='logout'
+                class='hover:text-[#999900] text-[#FFF000] block font-semibold text-[15px]'>Log Out</a>
+            </li>
           <?php endif ?>
 
           </ul>
