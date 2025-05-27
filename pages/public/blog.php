@@ -84,7 +84,11 @@ $comment->bind_result($cID, $cUser, $cBlog, $cContent, $cCreated, $uName);
             </div>
             <p class="text-gray-500"><?= htmlspecialchars($cContent) ?></p>
 
-            <?php ?>
+            <?php if ($_SESSION['role'] === 'admin') : ?>
+                <button
+            class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-white bg-[#FF0000] transition-all ease-in-out duration-300 hover:bg-white hover:text-[#FF0000] hover:border-[#FF0000]'><a href = 'login' >Delete</a></button>
+
+            <?php endif ?>
             
         </div>
     </div>
