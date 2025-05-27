@@ -24,7 +24,7 @@ $blog->bind_result($bID, $bUser, $bTitle, $bImage, $bText, $bShow, $bCreated, $u
             <div class="p-6">
               <h3 class="text-lg font-bold text-gray-800 mb-3"><?= $bTitle ?> </h3>
               <p class="text-[#880707] text-[13px] font-semibold mt-4">By <?= $uName ?> </p>
-              <a href="blogInfo?bid=<?=$bID?>" class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-[#880707] hover:bg-[#4D0000] text-white text-[13px]">Read More</a>
+              <a href="blog?bid=<?=$bID?>" class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-[#880707] hover:bg-[#4D0000] text-white text-[13px]">Read More</a>
             </div>
           </div>
           <?php endwhile ?>
