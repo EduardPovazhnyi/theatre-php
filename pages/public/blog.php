@@ -56,7 +56,7 @@ $comment->bind_result($cID, $cUser, $cBlog, $cContent, $cCreated, $uName);
 
                 <?php if(isset($_SESSION['id'])) : ?>
               <div class="mt-20">
-                <form id="commentForm" action="commentControllerSanitise?bid=<?= $blogId ?>&uid=<?=$userId?>" method="post">
+                <form id="commentForm" action="commentControllerSanitise?bid=<?= $bID ?>&uid=<?=$_SESSION['id']?>" method="post">
                 <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Comment on <?= $bTitle ?></label>
                   <textarea id="comment" name="content" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your comment..."></textarea>
                   <button type="submit" class="relative inline cursor-pointer text-xl font-medium text-[#880707] hover:text-[#4D0000] before:bg-[#FFF000]  before:absolute before:-bottom-1 before:block before:h-[2px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100">Submit Comment</button>
@@ -83,6 +83,8 @@ $comment->bind_result($cID, $cUser, $cBlog, $cContent, $cCreated, $uName);
                 <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
             </div>
             <p class="text-gray-500"><?= htmlspecialchars($cContent) ?></p>
+
+            <?php ?>
             
         </div>
     </div>
@@ -102,12 +104,12 @@ document.getElementById('commentForm').addEventListener('submit', function(event
     alert('Comment must be at least 5 characters long.');
     event.preventDefault();
   }
-  else if (comment.length > 500) {
+  if (comment.length > 500) {
     alert('Comment cannot be longer than 500 characters.');
     event.preventDefault();
   }
   else{
-    
+
   }
 });
 </script>
