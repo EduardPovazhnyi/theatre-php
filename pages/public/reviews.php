@@ -2,37 +2,35 @@
 include "database/config.php";
 include "components/header.php";
 
-$blog = $conn->prepare("SELECT 
+$review = $conn->prepare("SELECT 
 `review`.`id`, `user`, `show`, `content`, `review`.`created`, `show`.`name`, `user`.`username`
 FROM `review`
 INNER JOIN `user` ON `review`.`user` = `user`.`id`
 INNER JOIN `show` ON `review`.`show` = `show`.`id`
 ORDER BY `review`.`created` DESC;");
 
-$blog->execute();
-$blog->store_result();
-$blog->bind_result($rID, $rUser, $rShow, $rText, $rCreated, $sName, $uName);
+$review->execute();
+$review->store_result();
+$review->bind_result($rID, $rUser, $rShow, $rText, $rCreated, $sName, $uName);
 
 ?>
 
-<!-- component -->
-<div class="bg-gradient-to-bl from-blue-50 to-violet-50 flex items-center justify-center lg:h-screen">
-      <div class="container mx-auto mx-auto p-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
-          <div class="bg-white rounded-lg border p-4">
-            <div class="px-1 py-4">
-              <div class="font-bold text-xl mb-2">Blog Title</div>
-              <p class="text-gray-700 text-base">This is a simple blog card example using Tailwind CSS. You can replace this text with your own blog content.</p>
-            </div>
-            <div class="px-1 py-4">
-              <a href="#" class="text-blue-500 hover:underline">Read More</a>
+<div class="bg-gray-100 md:px-10 px-4 py-12 font-[sans-serif]">
+      <div class="max-w-5xl max-lg:max-w-3xl max-sm:max-w-sm mx-auto">
+        <h2 class="text-3xl font-extrabold text-[#880707] mb-8">Reviews</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-sm:gap-8">
+          <?php while($review->fetch()) : ?>
+          <div class="bg-white rounded overflow-hidden">
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-gray-800 mb-3">Review of <?= $sName ?> </h3>
+              <p class="text-[#880707] text-[13px] font-semibold mt-4">By <?= $uName ?> </p>
+              <a href="blogInfo?bid=<?=$rShow?>" class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-[#880707] hover:bg-[#4D0000] text-white text-[13px]">Read More</a>
             </div>
           </div>
-          <!-- Add more items as needed -->
+          <?php endwhile ?>
         </div>
       </div>
-</div>
-
+    </div>
 <?php
 include "components/footer.php";
 ?>

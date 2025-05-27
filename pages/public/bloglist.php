@@ -16,7 +16,7 @@ $blog->bind_result($bID, $bUser, $bTitle, $bImage, $bText, $bShow, $bCreated, $u
 
 <div class="bg-gray-100 md:px-10 px-4 py-12 font-[sans-serif]">
       <div class="max-w-5xl max-lg:max-w-3xl max-sm:max-w-sm mx-auto">
-        <h2 class="text-3xl font-extrabold text-[#880707] mb-8">Blog Posts</h2>
+        <h2 class="text-3xl font-extrabold text-[#880707] mb-8">Blog posts</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-sm:gap-8">
           <?php while($blog->fetch()) : ?>
           <div class="bg-white rounded overflow-hidden">
