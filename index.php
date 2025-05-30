@@ -35,6 +35,8 @@ $routes = [
     'loginController' => 'controller/loginController.php',
     'logout' => 'controller/logoutController.php',
     'commentControllerSanitise' => 'controller/commentControllerSanitise.php',
+    'deleteCommentController' => 'controller/deleteCommentController.php',
+    'deleteBlogController' => 'controller/deleteBlogController.php',
 ];
 
 // check if the url matches a route

@@ -35,11 +35,18 @@ $comment->bind_result($cID, $cUser, $cBlog, $cContent, $cCreated, $uName);
 <section class="bg-white dark:bg-gray-900">
     <div class="container px-6 py-10 mx-auto">
         <h1 class="text-3xl font-semibold text-[#880707] capitalize lg:text-4xl dark:text-white">Blog post</h1>
-
         <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
             <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="<?=ROOT_DIR?>assets/images/shows/<?= $bImage ?>"alt="<?=$sName?>">
 
             <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+
+            <!-- only show delete button if user is logged in AND an admin -->
+            <?php if(isset($_SESSION['id'])) : ?>
+              <?php if ($_SESSION['role'] == 'admin') : ?>
+                <button class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-white bg-[#FF0000] transition-all ease-in-out duration-300 hover:bg-white hover:text-[#FF0000] hover:border-[#FF0000]'><a href = 'deleteBlogController?bid=<?=$blogID?>' >Delete</a></button>
+              <?php endif ?>
+            <?php endif ?>
+
                 <p class="text-sm text-[#880707] uppercase">Created at: <?=$bCreated?></p>
 
                 <a class="block mt-4 text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">
@@ -65,7 +72,6 @@ $comment->bind_result($cID, $cUser, $cBlog, $cContent, $cCreated, $uName);
                   <p>Please sign in to comment on this blog</p>
               </div>
               <?php endif ?>
-
             </div>
         </div>
     </div>
@@ -84,12 +90,13 @@ $comment->bind_result($cID, $cUser, $cBlog, $cContent, $cCreated, $uName);
             </div>
             <p class="text-gray-500"><?= htmlspecialchars($cContent) ?></p>
 
-            <?php if ($_SESSION['role'] === 'admin') : ?>
-                <button
-            class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-white bg-[#FF0000] transition-all ease-in-out duration-300 hover:bg-white hover:text-[#FF0000] hover:border-[#FF0000]'><a href = 'login' >Delete</a></button>
-
+            <!-- only show delete button if user is logged in AND an admin -->
+            <?php if(isset($_SESSION['id'])) : ?>
+              <?php if ($_SESSION['role'] == 'admin') : ?>
+                <button class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-white bg-[#FF0000] transition-all ease-in-out duration-300 hover:bg-white hover:text-[#FF0000] hover:border-[#FF0000]'><a href="deleteCommentController?cid=<?=$cID?>&bid=<?=$blogID?>" >Delete</a></button>
             <?php endif ?>
-            
+            <?php endif ?>
+
         </div>
     </div>
     <p class="-mt-2 text-gray-400 text-sm"><?= $cCreated ?></p>

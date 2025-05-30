@@ -5,20 +5,18 @@ session_start();
 // Validate and sanitise GET parameters
 if (!isset($_GET['bid']) || !isset($_GET['uid'])) {
     $_SESSION['status_message'] = "Invalid request.";
-    header("Location: blogInfo");
+    header("Location: blog");
     exit();
 }
+
 // cast to integer cleans the input into a number and ignores anything that isn't a number.
 $blogId = (int) $_GET['bid']; // Cast to integer
 $userId = (int) $_GET['uid']; // Cast to integer
 
-echo $userId;
-echo $blogId;
-
 // Validate and sanitise POST content
 if (!isset($_POST['content']) || empty(trim($_POST['content']))) {
     $_SESSION['status_message'] = "Comment cannot be empty.";
-    header("Location: blogInfo?bid=" . $blogId);
+    header("Location: blog?bid=" . $blogId);
     exit();
 }
 
@@ -27,7 +25,7 @@ $content = trim($_POST['content']);
 // Further check content length
 if (strlen($content) < 5 || strlen($content) > 500) {
     $_SESSION['status_message'] = "Comment must be between 5 and 500 characters.";
-    header("Location: blogInfo?bid=" . $blogId);
+    header("Location: blog?bid=" . $blogId);
     exit();
 }
 // Prepare and execute statement
