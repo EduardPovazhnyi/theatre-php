@@ -41,7 +41,7 @@ if ($delete) {
     $delete->bind_param("i", $blogId);
 
     if ($delete->execute()) {
-        $_SESSION['status_message'] = "Comment added successfully!";
+        $_SESSION['status_message'] = "Blog deleted successfully!";
     } else {
         $_SESSION['status_message'] = "Error executing query: " . $conn->error;
     }
