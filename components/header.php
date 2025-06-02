@@ -73,8 +73,12 @@ session_start();
         </div>
 
         <div class='flex items-center ml-auto space-x-6'>
+
+        <?php if (!isset($_SESSION['loggedin'])) : ?>
+
           <button
             class='px-4 py-2 text-sm rounded-sm font-bold text-black border-2 border-black bg-[#FFF000] transition-all ease-in-out duration-300 hover:bg-black hover:text-[#FFF000] hover:border-[#FFF000]'><a href = 'login' >Log In</a></button>
+        <?php endif ?>
 
           <button id="toggleOpen" class='lg:hidden'>
             <svg class="w-7 h-7" fill="#333" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
