@@ -40,6 +40,7 @@ $routes = [
     'reviewController' => 'controller/reviewController.php',
     'deleteReviewController' => 'controller/deleteReviewController.php',
     'feedbackController' => 'controller/feedbackController.php',
+    'deleteBlogControllerList' => 'controller/deleteBlogControllerList.php',
 ];
 
 // check if the url matches a route
