@@ -60,6 +60,7 @@ $review->bind_result($rID, $rUser, $rShow, $rText, $rCreated, $sName, $uName);
                   <p>Please sign in to review this show.</p>
               </div>
               <?php endif ?>
+              
 <!-- show reviews of this show -->
 
 <h2 class="mt-20 text-3xl font-extrabold text-[#880707] mb-8">Reviews for <?= $sName ?></h2>

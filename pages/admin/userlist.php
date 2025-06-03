@@ -15,7 +15,7 @@ $user->bind_result($uID, $uName, $uStatus);
 
 <style>p {text-align: center;}</style>
 <p class="text-[#880707] text-[40px] font-semibold mt-4">List of Active User Accounts</p>
-<p class="text-[#880707] text-[20px] font-semibold mt-4">Warning: Deactivating a user will also delete all their comments..</p>
+<p class="text-[#880707] text-[20px] font-semibold mt-4">Warning: Deactivating a user will also delete all their comments.</p>
 
 <style>
 .center {
