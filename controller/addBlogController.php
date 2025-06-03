@@ -33,8 +33,6 @@ if($blogID == 0) {
                 mkdir($targetDir, 0755, true);
             }
 
-            echo($_POST['title'] . $_POST['content'] .  $_POST['show'] . $user_id . $fileName);
-
             if (move_uploaded_file($_FILES["image_url"]["tmp_name"], $targetFilePath)) {
                 $addBlog = $conn->prepare("INSERT INTO `blog` (`title`, `content`, `show`, `user`, `image_url`) VALUES(?, ?, ?, ?, ?)");
                 $addBlog->bind_param('ssiis', $_POST['title'], $_POST['content'], $_POST['show'], $user_id, $fileName);

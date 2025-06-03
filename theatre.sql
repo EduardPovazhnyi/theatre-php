@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2025 at 07:58 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Jun 03, 2025 at 04:02 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `blog` (
   `content` mediumtext NOT NULL,
   `image_url` varchar(64) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `blog`
@@ -45,7 +45,8 @@ INSERT INTO `blog` (`id`, `user`, `show`, `title`, `content`, `image_url`, `crea
 (1, 1, 1, 'Review of The Phantom of the Opera', 'Amazing show! The music and performance were incredible.', 'phantom.jpg', '2025-03-25 15:13:35'),
 (2, 2, 2, 'Inception: A Mind-bending Film', 'A stunning thriller that challenges the mind with its complex narrative.', 'inception.jpg', '2025-03-25 15:13:35'),
 (3, 3, 3, 'The Lion King: A Visual Feast', 'A spectacular performance that captures the essence of the movie beautifully.', 'lion_king.jpg', '2025-03-25 15:13:35'),
-(4, 1, 4, 'Mary Poppins now showing', 'A musical marvel not to be missed!', 'mary_poppins.jpg', '2025-05-20 12:27:07');
+(4, 1, 4, 'Mary Poppins now showing', 'A musical marvel not to be missed.', 'mary_poppins.jpg', '2025-05-20 12:27:07'),
+(5, 4, 4, 'test blog', 'test blog', 'theatre.jpg', '2025-06-03 13:58:08');
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE `comment` (
   `blog` int(11) NOT NULL,
   `content` text NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `comment`
@@ -68,7 +69,8 @@ CREATE TABLE `comment` (
 INSERT INTO `comment` (`id`, `user`, `blog`, `content`, `created`) VALUES
 (1, 2, 1, 'I absolutely agree, the performance was breathtaking!', '2025-03-25 15:13:47'),
 (2, 1, 2, 'The concept of the movie was fascinating, a true masterpiece.', '2025-03-25 15:13:47'),
-(3, 3, 3, 'I love the costumes and choreography in this show!', '2025-03-25 15:13:47');
+(3, 3, 3, 'I love the costumes and choreography in this show!', '2025-03-25 15:13:47'),
+(7, 4, 4, 'test comment', '2025-06-03 08:57:16');
 
 -- --------------------------------------------------------
 
@@ -81,7 +83,7 @@ CREATE TABLE `feedback` (
   `user` int(11) NOT NULL,
   `content` text NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `feedback`
@@ -91,7 +93,7 @@ INSERT INTO `feedback` (`id`, `user`, `content`, `created`) VALUES
 (1, 1, 'Great user interface, but could use more show options.', '2025-03-25 15:13:59'),
 (2, 2, 'Fantastic experience, easy to navigate the website.', '2025-03-25 15:13:59'),
 (3, 3, 'Not enough information on upcoming shows.', '2025-03-25 15:13:59'),
-(4, 4, 'test feedback', '2025-06-02 15:40:46');
+(4, 4, 'test feedback', '2025-06-03 09:37:30');
 
 -- --------------------------------------------------------
 
@@ -105,7 +107,7 @@ CREATE TABLE `review` (
   `show` int(11) NOT NULL,
   `content` text NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `review`
@@ -127,7 +129,7 @@ CREATE TABLE `show` (
   `name` varchar(64) NOT NULL,
   `type` enum('film','theatre') NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `show`
@@ -152,7 +154,7 @@ CREATE TABLE `user` (
   `email` varchar(64) NOT NULL,
   `status` enum('user','admin','inactive') NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
@@ -163,8 +165,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `status`, `created`) 
 (2, 'jane_smith', 'password456', 'jane@example.com', 'admin', '2025-03-25 15:12:10'),
 (3, 'alice_williams', 'password789', 'alice@example.com', 'inactive', '2025-03-25 15:12:10'),
 (4, 'testuser1', '$2y$10$F0Lp3l3Rl.jeElQhz.S5O.9YeYNzJHFEcecKCJh.nGS6.DAhc/rlq', 'test@example.com', 'admin', '2025-05-27 10:52:42'),
-(5, 'testuser2', '$2y$10$Qe6wYK3u76ETpY4La0fo2u5jPBl1B82PbG7K5B3v01ElXYf08059O', 'test2@example.com', 'user', '2025-05-27 12:32:21'),
-(6, 'test3', '$2y$10$MsODSazHkoWXNxoW5vbnYOT3ByyOduoCc3VnWp94hx5aj2hDHcb2a', 'example3@test.com', 'inactive', '2025-06-02 17:46:51');
+(5, 'testuser2', '$2y$10$Qe6wYK3u76ETpY4La0fo2u5jPBl1B82PbG7K5B3v01ElXYf08059O', 'test2@example.com', 'user', '2025-05-27 12:32:21');
 
 --
 -- Indexes for dumped tables
@@ -223,13 +224,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -241,7 +242,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `show`
@@ -253,7 +254,7 @@ ALTER TABLE `show`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
