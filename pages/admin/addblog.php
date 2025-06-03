@@ -32,7 +32,7 @@ $show->bind_result($showID, $showName);
 <?php if ($blogID == 0) :?>
 <p class="text-[#880707] text-[40px] font-semibold mt-4">Add Blog</p>
 <?php else :?>
-<p class="text-[#880707] text-[40px] font-semibold mt-4">Edit Blog</p>
+<p class="text-[#880707] text-[40px] font-semibold mt-4">Edit Blog with ID <?= $blogID ?></p>
 <?php endif?>
 
 <main class="upload container mx-auto p-6">
@@ -42,9 +42,11 @@ $show->bind_result($showID, $showName);
     <?php endif ?>
 <section class="uploadVinyl bg-white shadow-md rounded-lg p-6 mt-4">
     <form action="addBlogController?bid=<?=$blogID?>" method="post" enctype="multipart/form-data" class="space-y-4">
-        <label for="imgUpload" class="block text-gray-600">Select Image</label>
+        <?php if($blogID == 0) : ?>
+            <label for="imgUpload" class="block text-gray-600">Select Image</label>
         <input type="file" name="image_url" id="imgUpload" class="block w-full border rounded p-2">
         Current image: <?= $bImage ?>
+        <?php endif ?>
        
         <label for="blogTitle" class="block text-gray-600">Blog Title</label>    
         <input type="text" name="title" id="blogTitle" value="<?=$bTitle?>" required class="block w-full border rounded p-2">
