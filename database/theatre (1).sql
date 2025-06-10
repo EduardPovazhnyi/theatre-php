@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2025 at 04:02 PM
+-- Generation Time: Jun 10, 2025 at 12:52 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -46,7 +46,7 @@ INSERT INTO `blog` (`id`, `user`, `show`, `title`, `content`, `image_url`, `crea
 (2, 2, 2, 'Inception: A Mind-bending Film', 'A stunning thriller that challenges the mind with its complex narrative.', 'inception.jpg', '2025-03-25 15:13:35'),
 (3, 3, 3, 'The Lion King: A Visual Feast', 'A spectacular performance that captures the essence of the movie beautifully.', 'lion_king.jpg', '2025-03-25 15:13:35'),
 (4, 1, 4, 'Mary Poppins now showing', 'A musical marvel not to be missed.', 'mary_poppins.jpg', '2025-05-20 12:27:07'),
-(5, 4, 4, 'test blog', 'test blog', 'theatre.jpg', '2025-06-03 13:58:08');
+(5, 4, 4, 'Phantom of the Opera – An Actor’s Perspective', 'Phantom of the Opera – An Actor’s Perspective', 'theatre.jpg', '2025-06-03 13:58:08');
 
 -- --------------------------------------------------------
 
@@ -70,7 +70,7 @@ INSERT INTO `comment` (`id`, `user`, `blog`, `content`, `created`) VALUES
 (1, 2, 1, 'I absolutely agree, the performance was breathtaking!', '2025-03-25 15:13:47'),
 (2, 1, 2, 'The concept of the movie was fascinating, a true masterpiece.', '2025-03-25 15:13:47'),
 (3, 3, 3, 'I love the costumes and choreography in this show!', '2025-03-25 15:13:47'),
-(7, 4, 4, 'test comment', '2025-06-03 08:57:16');
+(7, 4, 4, 'Cats is such a unique show!', '2025-06-03 08:57:16');
 
 -- --------------------------------------------------------
 
@@ -161,10 +161,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `status`, `created`) VALUES
-(1, 'john_doe', 'password123', 'john@example.com', 'user', '2025-03-25 15:12:10'),
-(2, 'jane_smith', 'password456', 'jane@example.com', 'admin', '2025-03-25 15:12:10'),
-(3, 'alice_williams', 'password789', 'alice@example.com', 'inactive', '2025-03-25 15:12:10'),
-(4, 'testuser1', '$2y$10$F0Lp3l3Rl.jeElQhz.S5O.9YeYNzJHFEcecKCJh.nGS6.DAhc/rlq', 'test@example.com', 'admin', '2025-05-27 10:52:42'),
+(1, 'Anna', 'password123', 'anna@gmail.com', 'user', '2025-03-25 15:12:10'),
+(2, 'Yarchyk', 'password456', 'jane@example.com', 'admin', '2025-03-25 15:12:10'),
+(3, 'Rostyk', 'password789', 'alice@example.com', 'inactive', '2025-03-25 15:12:10'),
+(4, 'Eduard', '$2y$10$F0Lp3l3Rl.jeElQhz.S5O.9YeYNzJHFEcecKCJh.nGS6.DAhc/rlq', 'test@example.com', 'admin', '2025-05-27 10:52:42'),
 (5, 'testuser2', '$2y$10$Qe6wYK3u76ETpY4La0fo2u5jPBl1B82PbG7K5B3v01ElXYf08059O', 'test2@example.com', 'user', '2025-05-27 12:32:21');
 
 --
