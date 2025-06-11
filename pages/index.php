@@ -31,7 +31,7 @@ $review->bind_result($rID, $rUser, $rShow, $rText, $rCreated, $sName, $uName);
 
 <style>p {text-align: center;}</style>
 <p class="text-[#880707] text-[40px] font-semibold mt-4">Welcome to Clyde Theatre!</p>
-<p class="text-[#880707] text-[20px] font-semibold mt-4">We are a local theatre committed to working with and for the community to put on the best stage shows and films.</p>
+<p class="text-[#880707] text-[20px] font-semibold mt-4">We are a local theater committed to working with and for the community to produce the best stage plays and films. Glad to see you on our web.</p>
 
 <!-- show blog posts -->
 <div class="bg-gray-100 md:px-10 px-4 py-12 font-[sans-serif]">

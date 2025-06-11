@@ -37,11 +37,13 @@ $show->bind_result($showID, $showName);
 
 <main class="upload container mx-auto p-6">
 	<h1 class="text-2xl font-bold text-center mb-6"></h1>
-    <?php if(isset($_SESSION['statusMsg'])) : ?>
-        <h4 class="text-center text-green-500 font-semibold"><?= $_SESSION['statusMsg'] ?></h4>
-    <?php endif ?>
+    <?php if (isset($_SESSION['statusMsg'])): ?>
+    <h4 class="text-center text-green-500 font-semibold"><?= $_SESSION['statusMsg']; ?></h4>
+    <?php unset($_SESSION['statusMsg']); ?>
+<?php endif; ?>
+
 <section class="uploadVinyl bg-white shadow-md rounded-lg p-6 mt-4">
-    <form action="addBlogController?bid=<?=$blogID?>" method="post" enctype="multipart/form-data" class="space-y-4">
+    <form action="addBlogController.php?bid=<?=$blogID?>" method="post" enctype="multipart/form-data" class="space-y-4">
         <?php if($blogID == 0) : ?>
             <label for="imgUpload" class="block text-gray-600">Select Image</label>
         <input type="file" name="image_url" id="imgUpload" class="block w-full border rounded p-2">

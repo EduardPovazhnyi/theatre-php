@@ -4,7 +4,15 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include 'database/Config.php';
+include 'database/config.php';
+
+// Adding a check
+if (!isset($user_id)) {
+    $_SESSION['statusMsg'] = "User not logged in!";
+    header("Location: addblog.php?bid=$blogID");
+    exit;
+}
+
 
 $user_id = $_SESSION['id']; // User's ID (stored in session)
 
