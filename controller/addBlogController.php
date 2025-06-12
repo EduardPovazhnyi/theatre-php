@@ -5,23 +5,23 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include 'database/config.php';
+$user_id = $_SESSION['id']; // User's ID (stored in session)
 
 // Adding a check
 if (!isset($user_id)) {
     $_SESSION['statusMsg'] = "User not logged in!";
-    header("Location: addblog.php?bid=$blogID");
+    header("Location: addblog?bid=$blogID");
     exit;
 }
 
 
-$user_id = $_SESSION['id']; // User's ID (stored in session)
 
 // Validate and sanitise GET parameters
-if (!isset($_GET['bid'])) {
-    $_SESSION['status_message'] = "Invalid request.";
-    header("Location: userlist");
-    exit();
-}
+// if (!isset($_GET['bid'])) {
+//     $_SESSION['status_message'] = "Invalid request.";
+//     header("Location: userlist");
+//     exit();
+// }
 
 // cast to integer cleans the input into a number and ignores anything that isn't a number.
 $blogID = (int) $_GET['bid']; // Cast to integer

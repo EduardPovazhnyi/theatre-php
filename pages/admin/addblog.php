@@ -2,20 +2,25 @@
 include "database/config.php";
 include "components/header.php";
 
-$blogID = $_GET['bid'];
+// $blogID = $_GET['bid'];
+// if (!isset($_GET['bid'])) {
+//     echo 'Error: Page not found';
+//     include "components/footer.php";
+//     exit;
+// }
 
 // get blog
-$blog = $conn->prepare("SELECT
-`blog`.`id`, `user`, `title`, `content`, `image_url`, `content`, `show`, `blog`.`created`, `user`.`username`, `show`.`name`, `show`.`id`
-FROM `blog`
-INNER JOIN `user` ON `blog`.`user` = `user`.`id`
-INNER JOIN `show` ON `blog`.`show` = `show`.`id`
-WHERE `blog`.`id` = $blogID;");
+// $blog = $conn->prepare("SELECT
+// `blog`.`id`, `user`, `title`, `content`, `image_url`, `content`, `show`, `blog`.`created`, `user`.`username`, `show`.`name`, `show`.`id`
+// FROM `blog`
+// INNER JOIN `user` ON `blog`.`user` = `user`.`id`
+// INNER JOIN `show` ON `blog`.`show` = `show`.`id`
+// WHERE `blog`.`id` = $blogID;");
 
-$blog->execute();
-$blog->store_result();
-$blog->bind_result($bID, $bUser, $bTitle, $bContent, $bImage, $bText, $bShow, $bCreated, $uName, $sName, $sID);
-$blog->fetch();
+// $blog->execute();
+// $blog->store_result();
+// $blog->bind_result($bID, $bUser, $bTitle, $bContent, $bImage, $bText, $bShow, $bCreated, $uName, $sName, $sID);
+// $blog->fetch();
 
 // get all show names
 
@@ -29,11 +34,9 @@ $show->bind_result($showID, $showName);
 ?>
 
 <style>p {text-align: center;}</style>
-<?php if ($blogID == 0) :?>
+
 <p class="text-[#880707] text-[40px] font-semibold mt-4">Add Blog</p>
-<?php else :?>
-<p class="text-[#880707] text-[40px] font-semibold mt-4">Edit Blog with ID <?= $blogID ?></p>
-<?php endif?>
+
 
 <main class="upload container mx-auto p-6">
 	<h1 class="text-2xl font-bold text-center mb-6"></h1>
@@ -43,26 +46,25 @@ $show->bind_result($showID, $showName);
 <?php endif; ?>
 
 <section class="uploadVinyl bg-white shadow-md rounded-lg p-6 mt-4">
-    <form action="addBlogController.php?bid=<?=$blogID?>" method="post" enctype="multipart/form-data" class="space-y-4">
-        <?php if($blogID == 0) : ?>
+    <form action="addBlogController" method="post" enctype="multipart/form-data">
+       
             <label for="imgUpload" class="block text-gray-600">Select Image</label>
         <input type="file" name="image_url" id="imgUpload" class="block w-full border rounded p-2">
-        Current image: <?= $bImage ?>
-        <?php endif ?>
+        
+   
        
         <label for="blogTitle" class="block text-gray-600">Blog Title</label>    
-        <input type="text" name="title" id="blogTitle" value="<?=$bTitle?>" required class="block w-full border rounded p-2">
+        <input type="text" name="title" id="blogTitle"  required class="block w-full border rounded p-2">
        
         <label for="blogContent" class="block text-gray-600">Blog Content</label>    
-        <textarea name="content" id="blogContent" required class="block w-full border rounded p-2"><?=$bText?></textarea>
+        <textarea name="content" id="blogContent" required class="block w-full border rounded p-2"></textarea>
 
         <label for="shows">Select a Show:</label>
         <select name="show" id="shows">
-            <option value=<?=$sID?>><?=$sName?></option>
             <?php while($show->fetch()) : ?>
-                <?php if ($showID != $sID) : ?>
+             
                 <option value=<?=$showID?>><?=$showName?></option>
-                <?php endif ?>
+               
             <?php endwhile?>
         </select>
         <br>

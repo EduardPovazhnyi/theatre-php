@@ -1,7 +1,8 @@
 <!-- Create routing for application -->
 <?php
 // Get the requested URL from the 'url' query parameter
-$url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
+$url = isset($_GET['url']) ? explode('?', rtrim($_GET['url'], '/'))[0] : '';
+
 
 // Define available routes (URL => corresponding PHP file)
 $routes = [
