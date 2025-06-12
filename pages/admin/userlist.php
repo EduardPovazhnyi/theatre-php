@@ -5,7 +5,6 @@ include "components/header.php";
 $user = $conn->prepare("SELECT 
 `id`, `username`, `status`
  FROM `user` 
- WHERE NOT `status` = 'inactive'
  ORDER BY `id` ASC;");
 
 $user->execute();
@@ -27,13 +26,21 @@ $user->bind_result($uID, $uName, $uStatus);
 }
 </style>
 <?php while($user->fetch()) : ?>
-          <div class="bg-white center rounded overflow-hidden">
-            <div class="p-1">
-              <span class="text-lg center font-bold text-gray-800 mb-3"><?= $uName ?></span>
-              <button class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-white bg-[#FF0000] transition-all ease-in-out duration-300 hover:bg-white hover:text-[#FF0000] hover:border-[#FF0000]'><a href="deactivateController?uid=<?=$uID?>"  >Deactivate</a></button>
-            </div>
-          </div>
-          <?php endwhile ?>
+  <div class="bg-white center rounded overflow-hidden">
+  <div class="p-1">
+    <span class="text-lg center font-bold text-gray-800 mb-3"><?= $uName ?></span>
+    <?php if($uStatus == 'inactive'): ?>
+      <button class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-white bg-[#13C100] transition-all ease-in-out duration-300 hover:bg-white hover:text-[#13C100] hover:border-[#13C100]'>
+        <a href="deactivateController?uid=<?=$uID?>&action=activate">Activate</a>
+      </button>
+    <?php else: ?>
+      <button class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-white bg-[#FF0000] transition-all ease-in-out duration-300 hover:bg-white hover:text-[#FF0000] hover:border-[#FF0000]'>
+        <a href="deactivateController?uid=<?=$uID?>&action=deactivate">Deactivate</a>
+      </button>
+    <?php endif; ?>
+  </div>
+</div>
+<?php endwhile ?>
 
 <?php
 include "components/footer.php";
