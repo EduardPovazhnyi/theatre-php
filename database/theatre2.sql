@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2025 at 05:02 PM
+-- Generation Time: Jun 10, 2025 at 03:04 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,12 +42,11 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id`, `user`, `show`, `title`, `content`, `image_url`, `created`) VALUES
-(1, 1, 1, 'Les Misérables: The Rehearsal Journey', 'How the cast prepares for this epic musical.', 'life_of_pi.jpeg', '2025-03-25 15:13:35'),
-(2, 2, 2, 'Fisherman\'s Friends – The Revival of a Classic', 'Why audiences love Fisherman\'s Friends.', 'fishermans_friends.jpeg', '2025-03-25 15:13:35'),
-(3, 3, 3, 'The Lion King: From Screen to Stage', 'The transition from film to theatre. The transition from film to theatre.', 'THE-LION-KING-MUSICAL.jpg', '2025-03-25 15:13:35'),
-(4, 1, 4, 'Mary Poppins in Modern Theatre', 'How the musical is choreographed.', 'mary_poppins.jpg', '2025-05-20 12:27:07'),
-(5, 4, 4, 'Romeo and Juliet: Love and Tragedy', 'What makes this play timeless?', 'musical.jpeg', '2025-06-03 13:58:08'),
-(16, 4, 1, 'Shakespeare in Modern Theatre', 'Why Macbeth still resonates today. Why Macbeth still resonates today. ', 'phantom.jpg', '2025-06-12 14:07:44');
+(1, 1, 1, 'Review of The Phantom of the Opera', 'Amazing show! The music and performance were incredible.', 'phantom.jpg', '2025-03-25 15:13:35'),
+(2, 2, 2, 'Inception: A Mind-bending Film', 'A stunning thriller that challenges the mind with its complex narrative.', 'inception.jpg', '2025-03-25 15:13:35'),
+(3, 3, 3, 'The Lion King: A Visual Feast', 'A spectacular performance that captures the essence of the movie beautifully.', 'lion_king.jpg', '2025-03-25 15:13:35'),
+(4, 1, 4, 'Mary Poppins now showing', 'A musical marvel not to be missed.', 'mary_poppins.jpg', '2025-05-20 12:27:07'),
+(5, 4, 4, 'Phantom of the Opera – An Actor’s Perspective', 'Phantom of the Opera – An Actor’s Perspective', 'theatre.jpg', '2025-06-03 13:58:08');
 
 -- --------------------------------------------------------
 
@@ -71,8 +70,7 @@ INSERT INTO `comment` (`id`, `user`, `blog`, `content`, `created`) VALUES
 (1, 2, 1, 'I absolutely agree, the performance was breathtaking!', '2025-03-25 15:13:47'),
 (2, 1, 2, 'The concept of the movie was fascinating, a true masterpiece.', '2025-03-25 15:13:47'),
 (3, 3, 3, 'I love the costumes and choreography in this show!', '2025-03-25 15:13:47'),
-(7, 4, 4, 'Cats is such a unique show!', '2025-06-03 08:57:16'),
-(9, 1, 16, 'Top 10 list is spot on! Can’t wait to check out some of these albums.', '2025-06-13 13:03:12');
+(7, 4, 4, 'Cats is such a unique show!', '2025-06-03 08:57:16');
 
 -- --------------------------------------------------------
 
@@ -116,9 +114,9 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`id`, `user`, `show`, `content`, `created`) VALUES
-(2, 2, 2, 'How set design creates an immersive experience.', '2025-03-25 15:14:15'),
-(3, 3, 3, 'The Lion King show was spectacular, but I felt it lacked some of the emotional depth of the original.', '2025-03-25 15:14:15'),
-(4, 1, 1, 'Top 10 list is spot on! Can’t wait to check out some of these albums.', '2025-06-13 13:05:08');
+(1, 1, 1, 'A truly mesmerizing performance that captivated me from start to finish.', '2025-03-25 15:14:15'),
+(2, 2, 2, 'Inception is a must-watch for anyone who enjoys mind-bending thrillers.', '2025-03-25 15:14:15'),
+(3, 3, 3, 'The Lion King show was spectacular, but I felt it lacked some of the emotional depth of the original.', '2025-03-25 15:14:15');
 
 -- --------------------------------------------------------
 
@@ -138,8 +136,8 @@ CREATE TABLE `show` (
 --
 
 INSERT INTO `show` (`id`, `name`, `type`, `created`) VALUES
-(1, 'Les Misérables: The Rehearsal Journey', 'theatre', '2025-03-25 15:13:15'),
-(2, 'Fisherman\'s Friends', 'theatre', '2025-03-25 15:13:15'),
+(1, 'The Phantom of the Opera', 'theatre', '2025-03-25 15:13:15'),
+(2, 'Inception', 'film', '2025-03-25 15:13:15'),
 (3, 'The Lion King', 'theatre', '2025-03-25 15:13:15'),
 (4, 'Mary Poppins', 'theatre', '2025-05-20 12:24:57');
 
@@ -163,9 +161,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `status`, `created`) VALUES
-(1, 'Anna', '$2y$10$s9yyl6UUkZXQ/hV0koRgSO1BqG/l/Ldb/sY56/BuiJ.4MY89YeZ36', 'anna@gmail.com', 'user', '2025-03-25 15:12:10'),
-(2, 'Yarchyk', '$2y$10$rco7F3GHExqAf6bMlTAdCO55QRp276VrYq8Y5tTiOFmCWESyfxAwS', 'yarchyk@gmail.com', 'admin', '2025-03-25 15:12:10'),
-(3, 'Rostyk', '$2y$10$s0DqyL1eoGCiorO25ufxhuZ79tZarD86QjhyHUUFQseTbebN3syqW', 'rostyk@gmail.com', 'user', '2025-03-25 15:12:10'),
+(1, 'Anna', 'password123', 'anna@gmail.com', 'user', '2025-03-25 15:12:10'),
+(2, 'Yarchyk', 'password456', 'yarchyk@gmail.com', 'admin', '2025-03-25 15:12:10'),
+(3, 'Rostyk', 'password789', 'rostyk@gmail.com', 'inactive', '2025-03-25 15:12:10'),
 (4, 'Eduard', '$2y$10$F0Lp3l3Rl.jeElQhz.S5O.9YeYNzJHFEcecKCJh.nGS6.DAhc/rlq', 'eduard@gmail.com', 'admin', '2025-05-27 10:52:42'),
 (5, 'Urik', '$2y$10$Qe6wYK3u76ETpY4La0fo2u5jPBl1B82PbG7K5B3v01ElXYf08059O', 'urik@gmail.com', 'user', '2025-05-27 12:32:21'),
 (6, 'Solomiia', '$2y$10$tBx6pBX/Lzbs/0XZRqAoY.jurywmmWSH.BPyVCCgPAqzR5ezW8VEC', 'solomiia@gmail.com', 'user', '2025-06-10 10:58:18');
@@ -227,13 +225,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -245,7 +243,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `show`
