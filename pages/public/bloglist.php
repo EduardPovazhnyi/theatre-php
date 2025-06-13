@@ -15,6 +15,19 @@ $blog->bind_result($bID, $bUser, $bTitle, $bImage, $bText, $bShow, $bCreated, $u
 
 ?>
 
+<!-- Theatre background section -->
+<div class="w-full flex justify-center items-center">
+  <img src="assets/images/shows/theatre.jpg" alt="Clyde Theatre" class="w-full max-h-[400px] object-cover shadow-lg" style="object-position: center;">
+</div>
+
+<!-- Title and subtitle under the image -->
+<div class="text-center mt-4 mb-6">
+  <h1 class="text-[#880707] text-[40px] font-extrabold">Welcome to Clyde Theatre!</h1>
+  <p class="text-[#880707] text-[20px] font-extrabold mt-4">
+    We are a local theater committed to working with and for the community to produce the best stage plays and films. Glad to see you on our web.
+  </p>
+</div>
+
 <div class="bg-gray-100 md:px-10 px-4 py-12 font-[sans-serif]">
       <div class="max-w-5xl max-lg:max-w-3xl max-sm:max-w-sm mx-auto">
         <h2 class="text-3xl font-extrabold text-[#880707] mb-8">Blog posts</h2>

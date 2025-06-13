@@ -29,9 +29,19 @@ $review->store_result();
 $review->bind_result($rID, $rUser, $rShow, $rText, $rCreated, $sName, $uName);
 ?>
 
-<style>p {text-align: center;}</style>
-<p class="text-[#880707] text-[40px] font-semibold mt-4">Welcome to Clyde Theatre!</p>
-<p class="text-[#880707] text-[20px] font-semibold mt-4">We are a local theater committed to working with and for the community to produce the best stage plays and films. Glad to see you on our web.</p>
+<!-- Theatre background section -->
+<div class="w-full flex justify-center items-center">
+  <img src="assets/images/shows/theatre.jpg" alt="Clyde Theatre" class="w-full max-h-[400px] object-cover shadow-lg" style="object-position: center;">
+</div>
+
+<!-- Title and subtitle under the image -->
+<div class="text-center mt-4 mb-6">
+  <h1 class="text-[#880707] text-[40px] font-extrabold">Welcome to Clyde Theatre!</h1>
+  <p class="text-[#880707] text-[20px] font-extrabold mt-4">
+    We are a local theater committed to working with and for the community to produce the best stage plays and films. Glad to see you on our web.
+  </p>
+</div>
+
 
 <!-- show blog posts -->
 <div class="bg-gray-100 md:px-10 px-4 py-12 font-[sans-serif]">

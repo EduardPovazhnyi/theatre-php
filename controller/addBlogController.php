@@ -56,11 +56,52 @@ if($blogID == 0) {
         }
     } else {
         $_SESSION['statusMsg'] = "File upload error: " . $_FILES["image_url"]["error"];
-    }   
+    } 
+    // Editing the blog  
 } else {
-        $editBlog = $conn->prepare("UPDATE `blog` SET `show` = ?,`title` = ?,`content` = ? WHERE `id` = $blogID;");
-        $editBlog->bind_param('iss', $_POST['show'], $_POST['title'], $_POST['content']);
-        $editBlog->execute();
+    $updateFields = [];
+    $params = [];
+    $types = '';
+
+    // Basic fields
+    $updateFields[] = "`show` = ?";
+    $params[] = $_POST['show'];
+    $types .= 'i';
+
+    $updateFields[] = "`title` = ?";
+    $params[] = $_POST['title'];
+    $types .= 's';
+
+    $updateFields[] = "`content` = ?";
+    $params[] = $_POST['content'];
+    $types .= 's';
+
+    // If a new image is loaded
+    if (isset($_FILES["image_url"]) && $_FILES["image_url"]["error"] == 0) {
+        $targetDir = "assets/images/shows/";
+        $fileName = basename($_FILES["image_url"]["name"]);
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+        if (in_array($fileType, $allowTypes)) {
+            if (!is_dir($targetDir)) mkdir($targetDir, 0755, true);
+            if (move_uploaded_file($_FILES["image_url"]["tmp_name"], $targetFilePath)) {
+                $updateFields[] = "`image_url` = ?";
+                $params[] = $fileName;
+                $types .= 's';
+            }
+        }
+    }
+
+    $query = "UPDATE `blog` SET " . implode(', ', $updateFields) . " WHERE `id` = ?";
+    $params[] = $blogID;
+    $types .= 'i';
+
+    $editBlog = $conn->prepare($query);
+    $editBlog->bind_param($types, ...$params);
+    $editBlog->execute();
+
+    $_SESSION['statusMsg'] = "Blog updated successfully!";
 }
 
 header("Location: addblog?bid=$blogID");

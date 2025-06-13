@@ -15,6 +15,11 @@ $review->bind_result($rID, $rUser, $rShow, $rText, $rCreated, $sName, $uName);
 
 ?>
 
+<!-- Theatre background section -->
+<div class="w-full flex justify-center items-center">
+  <img src="assets/images/shows/theatre.jpg" alt="Clyde Theatre" class="w-full max-h-[400px] object-cover shadow-lg" style="object-position: center;">
+</div>
+
 <div class="bg-gray-100 md:px-10 px-4 py-12 font-[sans-serif]">
       <div class="max-w-5xl max-lg:max-w-3xl max-sm:max-w-sm mx-auto">
         <h2 class="text-3xl font-extrabold text-[#880707] mb-8">Reviews</h2>

@@ -3,7 +3,7 @@ include "database/config.php";
 include "components/header.php";
 ?>
 
-<div class="bg-gray-50 font-[sans-serif]">
+<div class="font-[sans-serif]" style="background: url('assets/images/shows/login_bg.jpg') center/cover no-repeat; min-height: 100vh;">
       <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
         <div class="max-w-md w-full">
           <a href="javascript:void(0)"><img

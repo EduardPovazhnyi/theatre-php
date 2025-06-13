@@ -2,25 +2,22 @@
 include "database/config.php";
 include "components/header.php";
 
-// $blogID = $_GET['bid'];
-// if (!isset($_GET['bid'])) {
-//     echo 'Error: Page not found';
-//     include "components/footer.php";
-//     exit;
-// }
-
-// get blog
-// $blog = $conn->prepare("SELECT
-// `blog`.`id`, `user`, `title`, `content`, `image_url`, `content`, `show`, `blog`.`created`, `user`.`username`, `show`.`name`, `show`.`id`
-// FROM `blog`
-// INNER JOIN `user` ON `blog`.`user` = `user`.`id`
-// INNER JOIN `show` ON `blog`.`show` = `show`.`id`
-// WHERE `blog`.`id` = $blogID;");
-
-// $blog->execute();
-// $blog->store_result();
-// $blog->bind_result($bID, $bUser, $bTitle, $bContent, $bImage, $bText, $bShow, $bCreated, $uName, $sName, $sID);
-// $blog->fetch();
+// Get blog data if editing
+$blogID = isset($_GET['bid']) ? (int)$_GET['bid'] : 0;
+$blogData = [
+    'title' => '',
+    'content' => '',
+    'show' => '',
+    'image_url' => ''
+];
+if ($blogID) {
+    $blog = $conn->prepare("SELECT `title`, `content`, `show`, `image_url` FROM `blog` WHERE `id` = ?");
+    $blog->bind_param("i", $blogID);
+    $blog->execute();
+    $blog->store_result();
+    $blog->bind_result($blogData['title'], $blogData['content'], $blogData['show'], $blogData['image_url']);
+    $blog->fetch();
+}
 
 // get all show names
 
@@ -46,24 +43,31 @@ $show->bind_result($showID, $showName);
 <?php endif; ?>
 
 <section class="uploadVinyl bg-white shadow-md rounded-lg p-6 mt-4">
-    <form action="addBlogController" method="post" enctype="multipart/form-data">
+    <form action="addBlogController?bid=<?=$blogID?>" method="post" enctype="multipart/form-data">
        
-            <label for="imgUpload" class="block text-gray-600">Select Image</label>
+        <label for="imgUpload" class="block text-gray-600">Select Image</label>
+        <?php if ($blogID && $blogData['image_url']): ?>
+            <div>
+                <img src="assets/images/shows/<?=$blogData['image_url']?>" style="max-width: 300px;">
+                <br>
+                <span class="text-xs">Current image</span>
+            </div>
+        <?php endif; ?>
         <input type="file" name="image_url" id="imgUpload" class="block w-full border rounded p-2">
         
    
        
         <label for="blogTitle" class="block text-gray-600">Blog Title</label>    
-        <input type="text" name="title" id="blogTitle"  required class="block w-full border rounded p-2">
+        <input type="text" name="title" id="blogTitle" value="<?=htmlspecialchars($blogData['title'])?>" required class="block w-full border rounded p-2">
        
         <label for="blogContent" class="block text-gray-600">Blog Content</label>    
-        <textarea name="content" id="blogContent" required class="block w-full border rounded p-2"></textarea>
+        <textarea name="content" id="blogContent" required class="block w-full border rounded p-2"><?=htmlspecialchars($blogData['content'])?></textarea>
 
         <label for="shows">Select a Show:</label>
         <select name="show" id="shows">
             <?php while($show->fetch()) : ?>
              
-                <option value=<?=$showID?>><?=$showName?></option>
+                <option value=<?=$showID?>><?=($showID == $blogData['show']) ? 'selected' : ''?>><?=$showName?></option>
                
             <?php endwhile?>
         </select>
